@@ -1,14 +1,28 @@
-.grid {
+/* .grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: fixed;
+
+} */
+
+
+.grid {
+display: flex;
 
 }
+
 .cell {
   height: 32vh;
-  margin-bottom: 2vh;
-  margin-left: 1vw;
-  margin-right: 1vw;
   background-color: #999;
-  width: 30vw;
+  width: 32vh;
+  border: 2px solid #2c3e50;
+}
+
+div.cell:hover{
+    background-color:Orchid;
+    color:white;
+    cursor:pointer;
+};
+
+body {
 }
