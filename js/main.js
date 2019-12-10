@@ -38,51 +38,88 @@
 //Check for win. Either use the 8 different combinations and when met trigger win. or work out if its a draw/loss.
 
 $(document).ready( function(){
+  //Set up initial player value. X goes first.
   var player = 'X'
+  //Set up X as first player, boolean for alternate X/O's
   var turnCount = true
-  // var turnCount = 0;
+  //Set up an index to call back to items in index at a later time for a win condition.
+  const board = [
+        '', '', '',
+        '', '', '',
+        '', '', ''
+      ];
 
+  //logging board in console for debugging info.
+  console.log(board);
+
+  //On click function  Place Tile
   $('.cell').on('click', function(){
+    //Updates the text from the tile that the player interacted with to their team Symbol.
+
+    // board
+    const clickedIndex = parseInt( $(this).attr('id') );
+
+    console.log( board[clickedIndex] );
+
     $(this).text( player );
-    if (turnCount === true) {
-      $(this).text('X');
-    } else {
-      $(this).text('O')
-    }
+      //Check to see if its P1 or p2's go.
+      //First if statement to see if its P1, if so print X and log it to the array.
+      if ( (turnCount === true) ) {
+        $(this).text('X');
+        $('#score0.scoreboard div').text('P2s Turn');
+        board.push($(this).text('X'));
+        //Update the "who's turn is it" field.
+
+        // 2) store value in variable representing game aka keep track of the state of the game --> in board.
+
+        //Getting the location of the index of the box we clicked on.
+        const boxIndex = $(this)[0].id;
+        //log index
+        console.log( boxIndex );
+
+        board[boxIndex] = 'X';
+
+        console.log(board);
+
+        } else {
+        $(this).text('O');
+        $('#score0.scoreboard div').text('P1s Turn');
+
+        const boxIndex = $(this)[0].id
+
+
+        console.log( boxIndex );
+
+        board[boxIndex] = 'O'
+
+        console.log(board);
+      }
     turnCount = !turnCount
   });
-
-
-
-  function init() {
-    board = [
-      '', '', '',
-      '', '', '',
-      '', '', ''
-    ];
-  };
-
-  init();
-
-  function render() {
-    board.forEach(function(mark, index){
-      console.log(mark, index);
-    });
-  };
-
-  function init() {
-    board = [
-      '', '', '',
-      '', '', '',
-      '', '', ''
-    ];
-
-    render();
-  };
-
-  // const squares = $('.grid').array('')
-
-  // const tiles =
-
-
 });
+
+
+
+
+
+
+
+  // function init() {
+  //   board = [
+  //     '', '', '',
+  //     '', '', '',
+  //     '', '', ''
+  //   ];
+  // };
+  //
+  // init();
+  //
+  // function render() {
+  //   board.forEach(function(mark, index){
+  //     console.log(mark, index);
+  //   });
+  // };
+  //
+  // // const squares = $('.grid').array('')
+  //
+  // // const tiles =
