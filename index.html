@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>CSS Template</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+      @import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
     </style>
   </head>
+<h1> Tic Tac Toe</h1>
 <body>
 
   <div class="grid">
   <div class="cell" id='1'></div>
   <div class="cell" id='2'></div>
   <div class="cell" id='3'></div>
+  <div class="scoreboard" id = '0'>Who's Turn + Time left on turn + Total time
+  <br>
+  <br>
+  P1's Turn
+  </div>
   </div>
   <div class="grid">
   <div class="cell" id='4'></div>
   <div class="cell" id='5'></div>
   <div class="cell" id='6'></div>
+  <div class="scoreboard" id = '1'>Wins Tallied</div>
   </div>
   <div class="grid">
-  <div class="cell" id='7'></div>
-  <div class="cell" id='8'></div>
-  <div class="cell" id='9'></div>
+    <div class="cell" id='7'></div>
+    <div class="cell" id='8'></div>
+    <div class="cell" id='9'></div>
+    <div class="scoreboard" id = '2'>Win condition  Yes/No  /w animations
+      <br>
+      <br><button id="reset-button">reset</button>
+    </div>
   </div>
+  <div class="footer"></div>
 </body>

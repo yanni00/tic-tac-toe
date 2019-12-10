@@ -36,3 +36,53 @@
 //Alternating between X and O inputs, cant place an X or O within a preoccupied square
 
 //Check for win. Either use the 8 different combinations and when met trigger win. or work out if its a draw/loss.
+
+$(document).ready( function(){
+  var player = 'X'
+  var turnCount = true
+  // var turnCount = 0;
+
+  $('.cell').on('click', function(){
+    $(this).text( player );
+    if (turnCount === true) {
+      $(this).text('X');
+    } else {
+      $(this).text('O')
+    }
+    turnCount = !turnCount
+  });
+
+
+
+  function init() {
+    board = [
+      '', '', '',
+      '', '', '',
+      '', '', ''
+    ];
+  };
+
+  init();
+
+  function render() {
+    board.forEach(function(mark, index){
+      console.log(mark, index);
+    });
+  };
+
+  function init() {
+    board = [
+      '', '', '',
+      '', '', '',
+      '', '', ''
+    ];
+
+    render();
+  };
+
+  // const squares = $('.grid').array('')
+
+  // const tiles =
+
+
+});

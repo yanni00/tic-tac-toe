@@ -4,11 +4,17 @@
   justify-content: fixed;
 
 } */
+/*   font-family: 'Solway', serif;   */
 
+.scoreboard {
+  width: 30vw;
+  height: ;
+  border: 3px solid #a335ee;
+  font-size: 5vh;
+}
 
 .grid {
 display: flex;
-
 }
 
 .cell {
@@ -16,13 +22,44 @@ display: flex;
   background-color: #999;
   width: 32vh;
   border: 2px solid #2c3e50;
+  text-align: center;
+  line-height: 30vh;
+  font-size: 25vh;
+  font-family: 'Solway', serif;
 }
 
 div.cell:hover{
     background-color:Orchid;
     color:white;
     cursor:pointer;
+    box-shadow:0 0 20px #a335ee;
+};
+
+.reset-button:hover{
+    background-color:Orchid;
+    color:white;
+    cursor:pointer;
 };
 
 body {
+}
+
+h1 {
+border: 5px solid #a335ee;
+}
+
+h2 {
+margin: 0 auto;
+font-size: 35px;
+margin: 10px;
+}
+
+#reset-button {
+text-align: center;
+font-size: 20px;
+border: 3px solid #6C5B7B;
+height: 10vh;
+width: 10vw;
+margin: 10px;
+background-color: #e6cc80;
 }
