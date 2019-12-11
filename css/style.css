@@ -18,15 +18,19 @@ display: flex;
 }
 
 .cell {
-  height: 32vh;
+  height: 25vh;
   background-color: #999;
-  width: 32vh;
+  width: 25vh;
   border: 2px solid #2c3e50;
   text-align: center;
-  line-height: 30vh;
+  line-height: 24vh;
   font-size: 25vh;
   font-family: 'Solway', serif;
 }
+
+/* .outerbound { */
+  /* border: 5px solid black; */
+/* } */
 
 div.cell:hover{
     background-color:Orchid;

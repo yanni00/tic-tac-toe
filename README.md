@@ -8,9 +8,13 @@ laid out end goals of project.
 Tue-10-December:
 6) centred symbols in centre of fields on click
 7) added on click to add text, need to add a way to cycle through x and o alternating.
-8) Added reset button
-9) Placed reset button in the right div + added #reset-button to the stylesheet
-10) Added array of tiles
-11) linked tiles context + position of tiles on board into array
-12) revised method, added X and O alternating
-13) 
+8) Added reset button.
+9) Placed reset button in the right div + added #reset-button to the stylesheet.
+10) Added array of tiles.
+11) linked tiles context + position of tiles on board into array.
+12) revised method, added X and O alternating.
+13) Set up win variable.
+14) Set up winningCombos index of the 8 win states available.
+15) Rescaled all page items down so it fits nicely on the page.
+16) Set up const for board
+17) Realised for a gameboard that is more than 3x3 you need to have code that checks for lines of symbols and then produces a winner. Then i will be able to make the code scale to larger games.

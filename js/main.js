@@ -49,7 +49,55 @@ $(document).ready( function(){
         '', '', ''
       ];
 
-  //logging board in console for debugging info.
+  const winningCombos = [
+    [0, 3, 6],
+    [0, 4, 8],
+    [0, 1, 2],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6]
+    [3, 4, 5],
+    [6, 7, 8],
+  ];
+
+  var win;
+
+  //
+  // Set up Win variable
+  //
+  // let win;
+  // win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
+  //
+  // Set up const value to track 1 row win
+  // const row[boardSize], col[boardSize], diag1, diag2;
+  //
+  // Added for loop to check the row and a nested one to get the column val, tried x value as parent but ran into trouble then tried y value worked better for left to right logging row by row.
+  //
+  // Iterate once through the loops, keeping count of X
+  // for(const y = 0; y < boardSize; y++)
+  // int lineTotal = 0;
+  // {
+  //     for(const x = 0; x < boardSize; x++)
+  //     {
+  //         //Check to see if a value is X on each tile and iterate through them
+  //         if (board[x][y] == 'X') { //if board x,y coordinate = X
+  //             row[x]++ //add 1 to row value
+  //             col[y]++ //add 1 to column value
+  //             if (x == y)          diag1++ //if x == y add 1 to diag
+  //             if (x+y == boardSize) diag2++
+  //         }
+  //         else if (board[x][y] == 'O' {
+  //             row[x]--
+  //             col[y]--
+  //             if (x == y)          diag1--
+  //             if (x+y == boardSize) diag2--
+  //         }
+  //     }
+  // }
+  //
+  // Set up winning tile combination index
+  //
+  // logging board in console for debugging info.
   console.log(board);
 
   //On click function  Place Tile
@@ -66,7 +114,7 @@ $(document).ready( function(){
       //First if statement to see if its P1, if so print X and log it to the array.
       if ( (turnCount === true) ) {
         $(this).text('X');
-        $('#score0.scoreboard div').text('P2s Turn');
+        $('#score0.scoreboard div').text("It's P2s Turn");
         board.push($(this).text('X'));
         //Update the "who's turn is it" field.
 
@@ -83,7 +131,7 @@ $(document).ready( function(){
 
         } else {
         $(this).text('O');
-        $('#score0.scoreboard div').text('P1s Turn');
+        $('#score0.scoreboard div').text("It's P1s Turn");
 
         const boxIndex = $(this)[0].id
 
