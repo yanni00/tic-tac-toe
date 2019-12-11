@@ -18,3 +18,4 @@ Tue-10-December:
 15) Rescaled all page items down so it fits nicely on the page.
 16) Set up const for board
 17) Realised for a gameboard that is more than 3x3 you need to have code that checks for lines of symbols and then produces a winner. Then i will be able to make the code scale to larger games.
+18) Linked reset button with location.reload(); for quick debugging!

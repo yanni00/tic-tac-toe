@@ -1,4 +1,4 @@
-//Tic Tac Toe v0.1 Draft of work planning
+//function hidetext(//Tic Tac Toe v0.1 Draft of work planning
 //
 //End Goals - Overall - Minimum Work
 //
@@ -37,17 +37,106 @@
 
 //Check for win. Either use the 8 different combinations and when met trigger win. or work out if its a draw/loss.
 
+// $(document).ready( function(){
+//   //Set up initial player value. X goes first.
+//   var player = 'X'
+//   //Set up X as first player, boolean for alternate X/O's
+//   var turnCount = true
+//   //Set up an index to call back to items in index at a later time for a win condition.
+//   const board = [
+//         '', '', '',
+//         '', '', '',
+//         '', '', ''
+//       ];
+//
+//   const winningCombos = [
+//     [0, 3, 6],
+//     [0, 4, 8],
+//     [0, 1, 2],
+//     [1, 4, 7],
+//     [2, 5, 8],
+//     [2, 4, 6]
+//     [3, 4, 5],
+//     [6, 7, 8],
+//   ];
+//
+//   console.log(board);
+//   $('.cell').on('click', function(){
+//     //Updates the text from the tile that the player interacted with to their team Symbol.
+//     // board
+//     const clickedIndex = parseInt( $(this).attr('id') );
+//
+//     console.log( board[clickedIndex] );
+//
+//     $(this).text( player );
+//       //Check to see if its P1 or p2's go.
+//       //First if statement to see if its P1, if so print X and log it to the array.
+//       if ( (turnCount === true) ) {
+//         $(this).text('X');
+//         $('#score0.scoreboard div').text("It's P2s Turn");
+//         board.push($(this).text('X'));
+//         //Update the "who's turn is it" field.
+//
+//         // 2) store value in variable representing game aka keep track of the state of the game --> in board.
+//
+//         //Getting the location of the index of the box we clicked on.
+//         const boxIndex = $(this)[0].id;
+//         //log index
+//         console.log( boxIndex );
+//
+//         board[boxIndex] = 'X';
+//
+//         console.log(board);
+//
+//         } else {
+//         $(this).text('O');
+//         $('#score0.scoreboard div').text("It's P1s Turn");
+//
+//         const boxIndex = $(this)[0].id
+//
+//
+//         console.log( boxIndex );
+//
+//         board[boxIndex] = 'O'
+//
+//         console.log(board);
+//         };
+//         //for loop that checks columns
+//         //for loop over every value in a row
+//
+//
+//
+//     turnCount = !turnCount
+//   });
+// }););
+
+
+
 $(document).ready( function(){
-  //Set up initial player value. X goes first.
+
   var player = 'X'
-  //Set up X as first player, boolean for alternate X/O's
   var turnCount = true
-  //Set up an index to call back to items in index at a later time for a win condition.
+  var player1TurnCount = 0
+  var player2TurnCount = 0
+
   const board = [
-        '', '', '',
-        '', '', '',
-        '', '', ''
-      ];
+    '', '', '',
+    '', '', '',
+    '', '', '',
+  ];
+
+  const player1 = [
+    '', '', '',
+    '', '', '',
+    '', '', '',
+  ];
+
+
+  const player2 = [
+    '', '', '',
+    '', '', '',
+    '', '', '',
+  ];
 
   const winningCombos = [
     [0, 3, 6],
@@ -55,119 +144,68 @@ $(document).ready( function(){
     [0, 1, 2],
     [1, 4, 7],
     [2, 5, 8],
-    [2, 4, 6]
+    [2, 4, 6],
     [3, 4, 5],
     [6, 7, 8],
   ];
-
-  var win;
-
-  //
-  // Set up Win variable
-  //
-  // let win;
-  // win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
-  //
-  // Set up const value to track 1 row win
-  // const row[boardSize], col[boardSize], diag1, diag2;
-  //
-  // Added for loop to check the row and a nested one to get the column val, tried x value as parent but ran into trouble then tried y value worked better for left to right logging row by row.
-  //
-  // Iterate once through the loops, keeping count of X
-  // for(const y = 0; y < boardSize; y++)
-  // int lineTotal = 0;
-  // {
-  //     for(const x = 0; x < boardSize; x++)
-  //     {
-  //         //Check to see if a value is X on each tile and iterate through them
-  //         if (board[x][y] == 'X') { //if board x,y coordinate = X
-  //             row[x]++ //add 1 to row value
-  //             col[y]++ //add 1 to column value
-  //             if (x == y)          diag1++ //if x == y add 1 to diag
-  //             if (x+y == boardSize) diag2++
-  //         }
-  //         else if (board[x][y] == 'O' {
-  //             row[x]--
-  //             col[y]--
-  //             if (x == y)          diag1--
-  //             if (x+y == boardSize) diag2--
-  //         }
-  //     }
-  // }
-  //
-  // Set up winning tile combination index
-  //
-  // logging board in console for debugging info.
   console.log(board);
+  console.log(winningCombos);
 
-  //On click function  Place Tile
+  for (var i = 0; i < winningCombos.length; i++) {
+    const combos = winningCombos[i];
+    const first = combos[0];
+    const second = combos[1];
+    const third = combos[2];
+    const fourth = combos[3];
+    const fifth = combos[4];
+    const sixth = combos[5];
+    const seventh = combos[6];
+    const eigth = combos[7];
+    if ( player1 === board[second]){
+      console.log('working');
+    };
+  };
+
   $('.cell').on('click', function(){
-    //Updates the text from the tile that the player interacted with to their team Symbol.
 
-    // board
     const clickedIndex = parseInt( $(this).attr('id') );
-
     console.log( board[clickedIndex] );
 
     $(this).text( player );
-      //Check to see if its P1 or p2's go.
-      //First if statement to see if its P1, if so print X and log it to the array.
+
       if ( (turnCount === true) ) {
         $(this).text('X');
         $('#score0.scoreboard div').text("It's P2s Turn");
         board.push($(this).text('X'));
-        //Update the "who's turn is it" field.
-
-        // 2) store value in variable representing game aka keep track of the state of the game --> in board.
-
-        //Getting the location of the index of the box we clicked on.
         const boxIndex = $(this)[0].id;
-        //log index
-        console.log( boxIndex );
-
+        player1[boxIndex] = $(this)[0].id;
         board[boxIndex] = 'X';
+        player1TurnCount ++;
+        // console.log(board);
+        console.log(player1);
+        // console.log(player1TurnCount);
 
-        console.log(board);
 
-        } else {
+
+
+      } else {
+
         $(this).text('O');
         $('#score0.scoreboard div').text("It's P1s Turn");
+        board.push($(this).text('O'));
+        const boxIndex = $(this)[0].id;
+        player2[boxIndex] = $(this)[0].id;
+        board[boxIndex] = 'O';
+        player2TurnCount ++;
+        // console.log(board);
+        console.log(player2);
+        };
 
-        const boxIndex = $(this)[0].id
-
-
-        console.log( boxIndex );
-
-        board[boxIndex] = 'O'
-
-        console.log(board);
-      }
     turnCount = !turnCount
   });
+
+  $('#reset-button').on('click', function(){
+
+    location.reload();
+  });
 });
-
-
-
-
-
-
-
-  // function init() {
-  //   board = [
-  //     '', '', '',
-  //     '', '', '',
-  //     '', '', ''
-  //   ];
-  // };
-  //
-  // init();
-  //
-  // function render() {
-  //   board.forEach(function(mark, index){
-  //     console.log(mark, index);
-  //   });
-  // };
-  //
-  // // const squares = $('.grid').array('')
-  //
-  // // const tiles =
