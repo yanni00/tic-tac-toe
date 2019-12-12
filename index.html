@@ -10,18 +10,48 @@
     <style>
       @import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
     </style>
+    <style>
+      #overlay {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.80);
+      z-index: 2;
+      cursor: pointer;
+      }
+
+      #text{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+      }
+    </style>
   </head>
-<div class="outerbound">
+  <div class="outerbound">
+    <div id="overlay" >
+    <div id="text">
+      <div id="overlayPrompt"></div>
+      <button id="reset-button">Rematch!</button>
+    </div>
+  </div>
   <h1> Tic Tac Toe</h1>
-  <body>
+  <body id="grad">
     <div class="grid">
     <div class="cell" id="0"></div>
     <div class="cell" id="1"></div>
     <div class="cell" id="2"></div>
     <div class="scoreboard" id = "score0">
     <br>
-    <br>
-    <div>P1's Turn</div>
+    <div id="turnDisplay"><b>P1's Turn</b></div>
 
     </div>
     </div>
@@ -29,16 +59,21 @@
     <div class="cell" id="3"></div>
     <div class="cell" id="4"></div>
     <div class="cell" id="5"></div>
-    <div class="scoreboard" id = "score1">Wins Tallied</div>
+    <div class="scoreboard" id = "score1">
+      <span>Draws: </span><span class='inline' id='draws'></span><br>
+      <span>X Win Count: </span><span class='inline' id='xWins'></span><br>
+      <span>O Win Count: </span><span class='inline' id='oWins'></span><br>
     </div>
+    </div>
+
     <div class="grid">
       <div class="cell" id="6"></div>
       <div class="cell" id="7"></div>
       <div class="cell" id="8"></div>
-      <div class="scoreboard" id="score2">Win condition  Yes/No  /w animations
-        <br><button id="reset-button">reset</button>
+      <div class="scoreboard" id="score2"><br>Odyssey
+        <br>
+        <div style="padding:20px"></div>
       </div>
     </div>
-    <div class="footer"></div>
   </body>
 </div>

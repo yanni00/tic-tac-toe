@@ -9,7 +9,7 @@
 // 5) On Friday of project week everyone individually presents their project to the class, with an overview of the app and a brief code tour of the highlights.
 //
 // //End Goals - Functionality - The app must:
-// 1) Render a game board in the browser
+// 1) Render a game board in the browser √
 // 2) Switch turns between X and O (or whichever markers you select); your game should prevent users from playing a turn into a square that is already occupied
 // 3) Visually display which side won if a player gets three in a row or show a draw/"cat’s game" if neither wins
 // 4) Include separate HTML / CSS / JavaScript files
@@ -32,107 +32,33 @@
 // Make a Vue.js version of your game, instead of jQuery, and compare the two...
 
 
-//Logic
-//Alternating between X and O inputs, cant place an X or O within a preoccupied square
 
-//Check for win. Either use the 8 different combinations and when met trigger win. or work out if its a draw/loss.
 
-// $(document).ready( function(){
-//   //Set up initial player value. X goes first.
-//   var player = 'X'
-//   //Set up X as first player, boolean for alternate X/O's
-//   var turnCount = true
-//   //Set up an index to call back to items in index at a later time for a win condition.
-//   const board = [
-//         '', '', '',
-//         '', '', '',
-//         '', '', ''
-//       ];
-//
-//   const winningCombos = [
-//     [0, 3, 6],
-//     [0, 4, 8],
-//     [0, 1, 2],
-//     [1, 4, 7],
-//     [2, 5, 8],
-//     [2, 4, 6]
-//     [3, 4, 5],
-//     [6, 7, 8],
-//   ];
-//
-//   console.log(board);
-//   $('.cell').on('click', function(){
-//     //Updates the text from the tile that the player interacted with to their team Symbol.
-//     // board
-//     const clickedIndex = parseInt( $(this).attr('id') );
-//
-//     console.log( board[clickedIndex] );
-//
-//     $(this).text( player );
-//       //Check to see if its P1 or p2's go.
-//       //First if statement to see if its P1, if so print X and log it to the array.
-//       if ( (turnCount === true) ) {
-//         $(this).text('X');
-//         $('#score0.scoreboard div').text("It's P2s Turn");
-//         board.push($(this).text('X'));
-//         //Update the "who's turn is it" field.
-//
-//         // 2) store value in variable representing game aka keep track of the state of the game --> in board.
-//
-//         //Getting the location of the index of the box we clicked on.
-//         const boxIndex = $(this)[0].id;
-//         //log index
-//         console.log( boxIndex );
-//
-//         board[boxIndex] = 'X';
-//
-//         console.log(board);
-//
-//         } else {
-//         $(this).text('O');
-//         $('#score0.scoreboard div').text("It's P1s Turn");
-//
-//         const boxIndex = $(this)[0].id
-//
-//
-//         console.log( boxIndex );
-//
-//         board[boxIndex] = 'O'
-//
-//         console.log(board);
-//         };
-//         //for loop that checks columns
-//         //for loop over every value in a row
-//
-//
-//
-//     turnCount = !turnCount
-//   });
-// }););
 
 
 
 $(document).ready( function(){
-
+  // Variables pre set up for easy personal reference.
   var player = 'X'
   var turnCount = true
+  var drawState = false
   var player1TurnCount = 0
   var player2TurnCount = 0
+  var player1WinCount = 0
+  var player2WinCount = 0
+  var drawCount = 0
 
-  const board = [
+  let board = [
+    '', '', '',
+    '', '', '',
+    '', '', '',
+  ];   // Initial setup of board arrays for information to be stored.
+  let player1 = [
     '', '', '',
     '', '', '',
     '', '', '',
   ];
-
-  const player1 = [
-    '', '', '',
-    '', '', '',
-    '', '', '',
-  ];
-
-
-  const player2 = [
+  let player2 = [
     '', '', '',
     '', '', '',
     '', '', '',
@@ -147,65 +73,102 @@ $(document).ready( function(){
     [2, 4, 6],
     [3, 4, 5],
     [6, 7, 8],
-  ];
-  console.log(board);
-  console.log(winningCombos);
+  ];   // A constant of the 8 winning combos for 3x3 game.
 
-  for (var i = 0; i < winningCombos.length; i++) {
-    const combos = winningCombos[i];
-    const first = combos[0];
-    const second = combos[1];
-    const third = combos[2];
-    const fourth = combos[3];
-    const fifth = combos[4];
-    const sixth = combos[5];
-    const seventh = combos[6];
-    const eigth = combos[7];
-    if ( player1 === board[second]){
-      console.log('working');
-    };
-  };
+  $('.cell').on('click', function(){ // On click function for all of the game tiles.
+    // When we click on any .cell run these functions...
 
-  $('.cell').on('click', function(){
+    const clickedIndex = parseInt( $(this).attr('id') ); // Create a const from clicked tiles to see which have been filled.
 
-    const clickedIndex = parseInt( $(this).attr('id') );
-    console.log( board[clickedIndex] );
+    $(this).text( player ); // Input player X or O in This .cell clicked.
 
-    $(this).text( player );
-
-      if ( (turnCount === true) ) {
-        $(this).text('X');
-        $('#score0.scoreboard div').text("It's P2s Turn");
-        board.push($(this).text('X'));
-        const boxIndex = $(this)[0].id;
-        player1[boxIndex] = $(this)[0].id;
-        board[boxIndex] = 'X';
-        player1TurnCount ++;
-        // console.log(board);
-        console.log(player1);
-        // console.log(player1TurnCount);
-
-
-
+      if (turnCount === true) { //rotating turn counter. X === true  O === false.
+        $(this).text('X');// If its player X's turn place x in text field of This .cell clicked.
+        $('#score0.scoreboard div').text("It's P2s Turn"); // Change player turn on side of screen.
+        board.push($(this).text('X')); // Push X value onto board array for later use.
+        const boxIndex = $(this)[0].id; // Create a const from this .cell's 1st value.
+        player1[boxIndex] = $(this)[0].id; // Change player1's array to have this cell marked.
+        board[boxIndex] = 'X'; //Used to check for win condition. by checking for 3 X's or 3 O's.
+        player1TurnCount ++;  //counter for player 1's moves.
 
       } else {
 
-        $(this).text('O');
-        $('#score0.scoreboard div').text("It's P1s Turn");
-        board.push($(this).text('O'));
-        const boxIndex = $(this)[0].id;
-        player2[boxIndex] = $(this)[0].id;
-        board[boxIndex] = 'O';
-        player2TurnCount ++;
-        // console.log(board);
-        console.log(player2);
+        $(this).text('O'); // If its player O's turn place o in text field of This .cell clicked.
+        $('#score0.scoreboard div').text("It's P1s Turn"); // Change player turn on side of screen.
+        board.push($(this).text('O')); // Push This .cell's text to board array for later use.
+        const boxIndex = $(this)[0].id; //Create a const from this .cells 1st value.
+        player2[boxIndex] = $(this)[0].id; //Change player2's array to have This .cell marked.
+        board[boxIndex] = 'O'; // Used to check for win condition. byb checking for 3 X's or 3 O's.
+        player2TurnCount ++; //Counter for player 2's moves.
         };
 
-    turnCount = !turnCount
+    turnCount = !turnCount //After either players turn, switch value so it is the other players turn.
+
+    for (var i = 0; i < winningCombos.length; i++) {
+
+      let playerTiles = "";
+
+      for (var j = 0; j < winningCombos[i].length; j++) {
+        playerTiles += board[winningCombos[i][j]];
+
+        }
+
+      if (playerTiles === 'XXX') {
+
+        player1WinCount ++;
+        const $xWins = $('#xWins')[0];
+        $xWins.innerText = player1WinCount;
+        on();
+        $overlayPrompt = $('#overlayPrompt')[0]
+        $overlayPrompt.innerText = 'X Wins'
+        return
+
+      } if (playerTiles === 'OOO'){
+
+        player2WinCount ++;
+        const $oWins = $('#oWins')[0];
+        $oWins.innerText = player2WinCount;
+        on();
+        $overlayPrompt = $('#overlayPrompt')[0]
+        $overlayPrompt.innerText = 'O Wins!';
+        return
+
+      } else if (!board.includes('')) {
+        drawState = true
+        $overlayPrompt.innerText = 'Draw Game!'
+        on();
+      }
+
+      }; // end of check winner loop
+      if (drawState){
+      drawCount ++;
+      const $draws = $('#draws')[0];
+      $draws.innerText = drawCount;
+      drawState = false
+      };
   });
 
   $('#reset-button').on('click', function(){
 
-    location.reload();
+    $('.cell').html('');
+
+    board = [
+      '', '', '',
+      '', '', '',
+      '', '', '',
+    ];
+    off()
   });
+
+  function on(){
+    // document.getElementById("overlay").style.display = "block";
+    $('#overlay').fadeIn(1000);
+  }
+
+  function off() {
+    // document.getElementById("overlay").style.display = "none";
+    $('#overlay').fadeOut(1000);
+  }
+
+
 });

@@ -19,3 +19,14 @@ Tue-10-December:
 16) Set up const for board
 17) Realised for a gameboard that is more than 3x3 you need to have code that checks for lines of symbols and then produces a winner. Then i will be able to make the code scale to larger games.
 18) Linked reset button with location.reload(); for quick debugging!
+19) added win + draw Logic
+20) added divs to scoreboard to keep track of wins/draws  
+
+
+1) a link to the live playable game on GitHub
+2) a general description of the project
+3) screenshot is nice to have
+4) description of main features
+5) list of any known bugs
+6) tech used (JS, HTML, CSS, jQuery)
+7) anything else you want to record about the project or the experience

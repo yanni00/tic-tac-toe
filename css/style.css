@@ -1,20 +1,49 @@
-/* .grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: fixed;
-
-} */
-/*   font-family: 'Solway', serif;   */
-
+/*  */
 .scoreboard {
-  width: 30vw;
+  width: 45vh;
   height: ;
-  border: 3px solid #a335ee;
+  border: 1vh solid #a335ee;
   font-size: 5vh;
+  text-align: center;
 }
 
+#grad {
+  background-image: linear-gradient(90deg, #bdc3c7, #2c3e50);
+;
+
+}
+
+#score0.scoreboard {
+  text-align: center;
+  font-size: 6vh;
+  color: #fdeff9;
+  /* background-image: linear-gradient( #7303c0, #ec38bc, #fdeff9); */
+  background-image: linear-gradient( #03001e , #7303c0);
+}
+#score1.scoreboard {
+  font-size: 6vh;
+  text-align: center;
+  /* background-image: linear-gradient( #7303c0, #ec38bc, #fdeff9); */
+  background-image: linear-gradient( #7303c0, #ec38bc);
+}
+#score2.scoreboard {
+  font-size: 6vh;
+  font-style: italic;
+  /* background-image: linear-gradient( #7303c0, #ec38bc, #fdeff9); */
+  background-image: linear-gradient( #ec38bc, #fdeff9);
+}
+#xWins.inline {
+  color: #fdeff9;
+}
+#oWins.inline {
+  color: #fdeff9;
+}
+#draws.inline {
+  color: #fdeff9;
+}
 .grid {
 display: flex;
+padding-left: 10vw;
 }
 
 .cell {
@@ -28,28 +57,22 @@ display: flex;
   font-family: 'Solway', serif;
 }
 
-/* .outerbound { */
-  /* border: 5px solid black; */
-/* } */
-
 div.cell:hover{
     background-color:Orchid;
     color:white;
     cursor:pointer;
     box-shadow:0 0 20px #a335ee;
-};
-
-#reset-button.button:hover{
-    background-color:Orchid;
-    color:white;
-    cursor:pointer;
-};
+    z-index: 2;
+}
 
 body {
+  font-family: Solway;
 }
 
 h1 {
-border: 5px solid #a335ee;
+/* border: 2px solid #a335ee; */
+text-align: center;
+width: 122vh
 }
 
 h2 {
@@ -58,12 +81,17 @@ font-size: 35px;
 margin: 10px;
 }
 
+#overlayPrompt {
+  font-size: 18vh;
+}
+
 #reset-button {
 text-align: center;
 font-size: 20px;
 border: 3px solid #6C5B7B;
 height: 10vh;
-width: 10vw;
+width: 20vw;
 margin: 10px;
 background-color: #e6cc80;
+cursor: pointer;
 }
