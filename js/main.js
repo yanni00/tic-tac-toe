@@ -1,4 +1,4 @@
-//Tic Tac Toe v0.1 Draft of work planning
+//function hidetext(//Tic Tac Toe v0.1 Draft of work planning
 
 $(document).ready( function(){
   // Variables pre set up for easy personal reference.
@@ -100,6 +100,7 @@ $(document).ready( function(){
 
       } else if (!board.includes('')) {
         drawState = true
+        $overlayPrompt = $('#overlayPrompt')[0]
         $overlayPrompt.innerText = 'Draw Game!'
         on();
       }
@@ -135,6 +136,4 @@ $(document).ready( function(){
     // document.getElementById("overlay").style.display = "none";
     $('#overlay').fadeOut(1000);
   }
-
-
 });
