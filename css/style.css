@@ -21,7 +21,7 @@
   background-image: linear-gradient( #03001e , #7303c0);
 }
 #score1.scoreboard {
-  font-size: 6vh;
+  font-size: 5vh;
   text-align: center;
   /* background-image: linear-gradient( #7303c0, #ec38bc, #fdeff9); */
   background-image: linear-gradient( #7303c0, #ec38bc);
